@@ -78,6 +78,20 @@ function EgovQnaList() {
                                     <div>2021-7-24</div>
                                 </Link>
                                 <Link to={URL.SUPPORT_QNA_DETAIL} className="list_item">
+                                    <div>3</div>
+                                    <div className="al">공통컴포넌트 중 모니터링 관련 서비스 실행시 오류가 발생합니다(15)</div>
+                                    <div>홍길동</div>
+                                    <div>3</div>
+                                    <div>2021-7-24</div>
+                                </Link>
+                                <Link to={URL.SUPPORT_QNA_DETAIL} className="list_item">
+                                    <div>3</div>
+                                    <div className="al">공통컴포넌트 중 모니터링 관련 서비스 실행시 오류가 발생합니다(15)</div>
+                                    <div>홍길동</div>
+                                    <div>3</div>
+                                    <div>2021-7-24</div>
+                                </Link>
+                                <Link to={URL.SUPPORT_QNA_DETAIL} className="list_item">
                                     <div>2</div>
                                     <div className="al">validation 처리 시.패스워드에 대한 메소드를 찾지 못합니다.</div>
                                     <div>홍길동</div>

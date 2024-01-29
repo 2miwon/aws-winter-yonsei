@@ -66,6 +66,9 @@ import EgovAdminGalleryEdit from 'pages/admin/gallery/EgovAdminGalleryEdit';
 import EgovAdminPasswordUpdate from 'pages/admin/manager/EgovAdminPasswordUpdate';
 import * as EgovNet from 'api/egovFetch'; // jwt토큰 위조 검사 때문에 추가
 import initPage from 'js/ui';
+import SearchBillList from "../pages/search/searchBillList";
+import BillDetail from "../pages/bill/billDetail";
+import Subscribe from "../pages/subscribe/subscribe";
 
 const RootRoutes = () => {
   //useLocation객체를 이용하여 정규표현식을 사용한 /admin/~ 으로 시작하는 경로와 비교에 사용(아래 1줄) */}
@@ -147,6 +150,12 @@ const SecondRoutes = () => {
 
         {/* ERROR */}
         <Route path={URL.ERROR} element={<EgovError />} />
+
+        <Route path={URL.SEARCH} element={<SearchBillList />} />
+        <Route path={URL.BILL} element={<BillDetail />} />
+        <Route path={URL.SUBSCRIBE} element={<Subscribe />} />
+
+
 
         {/* ABOUT */}
         <Route path={URL.ABOUT} element={<Navigate to={URL.ABOUT_SITE} />} />

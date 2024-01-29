@@ -5,6 +5,12 @@ const URL = {
     
     LOGIN                       : "/login", //로그인
     ERROR                       : "/error", //로그인
+
+    //SEARCH
+    SEARCH                      : "/search",
+    //BILL
+    BILL                        : "/bill",
+    SUBSCRIBE                   : "/subscribe",
     
     //ABOUT
     ABOUT                       : "/about", //사이트소개   
