@@ -9,7 +9,7 @@ const UserInfo = () => {
     const [subscriptions, setSubscriptions] = useState([]);
     const [subscriptionName, setSubscriptionName] = useState('');
 
-    const SERVER_URL_1 = 'http://52.79.230.93:8080';
+    const SERVER_URL_1 = 'http://52.78.206.96:8080';
     const SERVER_URL_2 = 'https://allaw.site';
 
     // 구독 정보를 불러오는 API 호출

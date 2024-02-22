@@ -22,7 +22,7 @@ const ChatWindow = ({ messages, setMessages }) => {
     };
 
     //const BACKEND_URL = 'http://localhost:8080/gpt/gen';
-    const BACKEND_URL = 'http://52.79.230.93:8080/gpt/gen';
+    const BACKEND_URL = 'http://52.78.206.96:8080/gpt/gen';
     const BACKEND_URL_2 = 'https://allaw.site/gpt/gen';
     // sendMessageToBackend 함수 수정
     const sendMessageToBackend = async (message) => {
