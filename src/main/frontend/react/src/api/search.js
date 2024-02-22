@@ -21,6 +21,10 @@ export const fetchSearchResults = async (query, page, sort) => {
           charset: 'utf-8',
           query: query,
           datatype: 'json',
+        }, {
+          headers: {
+            'User-Agent': 'www.allaw.site'
+          }
         });
 
         return response.data;
