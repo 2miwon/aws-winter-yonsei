@@ -22,17 +22,8 @@ export const fetchSearchResults = async (query, page, sort) => {
           query: query,
           datatype: 'json',
         });
-  
-        const keywords = [];
-        for (const result of response.data.result) {
-          if (result.totalcount) {
-            for (const item of result.items) {
-              keywords.push(item.keyword);
-            }
-          }
-        }      
-  
-        return keywords;
+
+        return response.data;
       } catch (error) {
         throw new Error('Failed to fetch keword results');
       }

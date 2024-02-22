@@ -34,7 +34,6 @@ function EgovMain(props) {
         if (searchQuery.length > 1) {
             try {
                 const suggested = await fetchKeword(searchQuery);
-                console.log(suggested);
                 setSuggestedKeywords(suggested);
             } catch (error) {
                 console.error('Error fetching suggested keywords:', error);
