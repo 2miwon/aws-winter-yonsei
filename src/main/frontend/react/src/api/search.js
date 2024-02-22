@@ -27,7 +27,7 @@ export const fetchSearchResults = async (query, page, sort) => {
           }
         });
 
-        return response.data;
+        return (response.data.result[0].items).concat(response.data.result[1].items);
       } catch (error) {
         throw new Error('Failed to fetch keword results');
       }
