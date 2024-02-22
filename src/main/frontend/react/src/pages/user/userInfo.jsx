@@ -9,8 +9,56 @@ const UserInfo = () => {
     const [subscriptions, setSubscriptions] = useState([]);
     const [subscriptionName, setSubscriptionName] = useState('');
 
-    const SERVER_URL = 'http://localhost:8080';
+    const SERVER_URL_1 = 'http://52.79.230.93:8080';
+    const SERVER_URL_2 = 'https://allaw.site';
 
+    // 구독 정보를 불러오는 API 호출
+    useEffect(() => {
+        axios.get(`${SERVER_URL_1}/subscriptions`).then(response => {
+            setSubscriptions(response.data);
+        }).catch(error => {
+            console.error('구독 정보를 불러오는 데 실패했습니다. 두 번째 URL로 시도합니다.', error);
+            axios.get(`${SERVER_URL_2}/subscriptions`).then(response => {
+                setSubscriptions(response.data);
+            }).catch(error => {
+                console.error('두 번째 URL로도 구독 정보를 불러오는 데 실패했습니다.', error);
+            });
+        });
+    }, []);
+
+    const handleSubscribe = (e) => {
+        e.preventDefault();
+        axios.post(`${SERVER_URL_1}/subscribe`, { value: subscriptionName }).then(response => {
+            console.log('구독이 성공적으로 추가되었습니다.', response.data);
+            setSubscriptionName('');
+            const newSubscription = response.data;
+            setSubscriptions([...subscriptions, newSubscription]);
+        }).catch(error => {
+            console.error('구독 추가에 실패했습니다. 두 번째 URL로 시도합니다.', error);
+            axios.post(`${SERVER_URL_2}/subscribe`, { value: subscriptionName }).then(response => {
+                console.log('구독이 성공적으로 추가되었습니다.', response.data);
+                setSubscriptionName('');
+                const newSubscription = response.data;
+                setSubscriptions([...subscriptions, newSubscription]);
+            }).catch(error => {
+                console.error('두 번째 URL로도 구독 추가에 실패했습니다.', error);
+            });
+        });
+    };
+
+    const handleUnsubscribe = (subscriptionId) => {
+        axios.delete(`${SERVER_URL_1}/unsubscribe/${subscriptionId}`).then(() => {
+            setSubscriptions(subscriptions.filter(subscription => subscription.id !== subscriptionId));
+        }).catch(error => {
+            console.error('구독 취소에 실패했습니다. 두 번째 URL로 시도합니다.', error);
+            axios.delete(`${SERVER_URL_2}/unsubscribe/${subscriptionId}`).then(() => {
+                setSubscriptions(subscriptions.filter(subscription => subscription.id !== subscriptionId));
+            }).catch(error => {
+                console.error('두 번째 URL로도 구독 취소에 실패했습니다.', error);
+            });
+        });
+    };
+    /**
     useEffect(() => {
         // 구독 정보를 불러오는 API 호출
         axios.get(`${SERVER_URL}/subscriptions`)
@@ -23,7 +71,8 @@ const UserInfo = () => {
     const handleSubscribe = (e) => {
         e.preventDefault();
         // 구독 추가 API 호출
-        axios.post(`${SERVER_URL}/subscribe`, { value: subscriptionName })
+        //axios.post(`${SERVER_URL}/subscribe`, { value: subscriptionName })
+        makeRequest('post', '/subscribe', { value: subscriptionName })
             .then(response => {
                 console.log('구독이 성공적으로 추가되었습니다.', response.data);
                 setSubscriptionName('');
@@ -35,13 +84,14 @@ const UserInfo = () => {
             });
     };
     const handleUnsubscribe = (subscriptionId) => {
-        axios.delete(`${SERVER_URL}/unsubscribe/${subscriptionId}`)
+        //axios.delete(`${SERVER_URL}/unsubscribe/${subscriptionId}`)
+        makeRequest('delete', `/unsubscribe/${subscriptionId}`)
             .then(() => {
                 // 성공적으로 삭제된 후 구독 목록 업데이트
                 setSubscriptions(subscriptions.filter(subscription => subscription.id !== subscriptionId));
             })
             .catch(error => console.error('구독 취소 실패', error));
-    };
+    };**/
 
     return (
         <div className="userInfoContainer">
