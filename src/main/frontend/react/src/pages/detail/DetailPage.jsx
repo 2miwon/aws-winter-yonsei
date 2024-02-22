@@ -39,11 +39,12 @@ const DetailPage = () => {
             try {
                 const rectangleWidth = window.innerWidth * 0.8;
                 const rectangleHeight = window.innerHeight * 0.2;
+                const response = await axios.post(`https://allaw.site/pdfurl/${idx}`);
                 WebViewer(
                     {
                         path: "/webviewer/lib/public",
                         licenseKey: "demo:1707201620106:7f4eafe9030000000069fe03ee7211c47e235a224e21040bb60f132600",
-                        initialDoc: `https://allaw.site/pdfurl/${idx}`
+                        initialDoc: response.data
                     },
                     viewer.current,
                 ).then((instance) => {
@@ -74,7 +75,7 @@ const DetailPage = () => {
     const fetchSummary = async () => {
         setIsLoading(true);
         try {
-            const response = await axios.post(`http://localhost:8080/gpt/${idx}/summary`);
+            const response = await axios.post(`https://allaw.site/gpt/${idx}/summary`);
             setContent(response.data);
 
             setIsLoading(false);
