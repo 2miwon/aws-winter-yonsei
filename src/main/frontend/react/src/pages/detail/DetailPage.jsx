@@ -43,7 +43,7 @@ const DetailPage = () => {
                     {
                         path: "/webviewer/lib/public",
                         licenseKey: "demo:1707201620106:7f4eafe9030000000069fe03ee7211c47e235a224e21040bb60f132600",
-                        initialDoc: `http://52.78.206.96:5000/file/${idx}`
+                        initialDoc: `https://allaw.site/pdfurl/${idx}`
                     },
                     viewer.current,
                 ).then((instance) => {
