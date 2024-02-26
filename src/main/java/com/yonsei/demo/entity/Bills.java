@@ -16,6 +16,10 @@ public class Bills {
 
     private String title;
 
+    private String proposer;
+
+    private String date;
+
     private String file_link;
 
     private ZonedDateTime created_at;
