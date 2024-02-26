@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for aws-winter-yonsei-bold-sun-2739 on 2024-02-26T22:30:44+09:00
+# fly.toml app configuration file generated for aws-winter-yonsei-weathered-breeze-8307 on 2024-02-27T01:52:34+09:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'aws-winter-yonsei-bold-sun-2739'
+app = 'aws-winter-yonsei-weathered-breeze-8307'
 primary_region = 'sjc'
 
 [build]
