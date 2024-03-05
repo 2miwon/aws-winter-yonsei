@@ -9,53 +9,34 @@ const UserInfo = () => {
     const [subscriptions, setSubscriptions] = useState([]);
     const [subscriptionName, setSubscriptionName] = useState('');
 
-    const SERVER_URL_1 = 'http://52.78.206.96:8080';
-    const SERVER_URL_2 = 'https://allaw.site';
+    const SERVER_URL = 'https://allaw.site';
 
     // 구독 정보를 불러오는 API 호출
     useEffect(() => {
-        axios.get(`${SERVER_URL_1}/subscriptions`).then(response => {
+        axios.get(`${SERVER_URL}/subscriptions`).then(response => {
             setSubscriptions(response.data);
         }).catch(error => {
-            console.error('구독 정보를 불러오는 데 실패했습니다. 두 번째 URL로 시도합니다.', error);
-            axios.get(`${SERVER_URL_2}/subscriptions`).then(response => {
-                setSubscriptions(response.data);
-            }).catch(error => {
-                console.error('두 번째 URL로도 구독 정보를 불러오는 데 실패했습니다.', error);
-            });
+            console.error('구독 정보를 불러오는 데 실패했습니다.', error);
         });
     }, []);
 
     const handleSubscribe = (e) => {
         e.preventDefault();
-        axios.post(`${SERVER_URL_1}/subscribe`, { value: subscriptionName }).then(response => {
+        axios.post(`${SERVER_URL}/subscribe`, { value: subscriptionName }).then(response => {
             console.log('구독이 성공적으로 추가되었습니다.', response.data);
             setSubscriptionName('');
             const newSubscription = response.data;
             setSubscriptions([...subscriptions, newSubscription]);
         }).catch(error => {
-            console.error('구독 추가에 실패했습니다. 두 번째 URL로 시도합니다.', error);
-            axios.post(`${SERVER_URL_2}/subscribe`, { value: subscriptionName }).then(response => {
-                console.log('구독이 성공적으로 추가되었습니다.', response.data);
-                setSubscriptionName('');
-                const newSubscription = response.data;
-                setSubscriptions([...subscriptions, newSubscription]);
-            }).catch(error => {
-                console.error('두 번째 URL로도 구독 추가에 실패했습니다.', error);
-            });
+            console.error('구독 추가에 실패했습니다.', error);
         });
     };
 
     const handleUnsubscribe = (subscriptionId) => {
-        axios.delete(`${SERVER_URL_1}/unsubscribe/${subscriptionId}`).then(() => {
+        axios.delete(`${SERVER_URL}/unsubscribe/${subscriptionId}`).then(() => {
             setSubscriptions(subscriptions.filter(subscription => subscription.id !== subscriptionId));
         }).catch(error => {
-            console.error('구독 취소에 실패했습니다. 두 번째 URL로 시도합니다.', error);
-            axios.delete(`${SERVER_URL_2}/unsubscribe/${subscriptionId}`).then(() => {
-                setSubscriptions(subscriptions.filter(subscription => subscription.id !== subscriptionId));
-            }).catch(error => {
-                console.error('두 번째 URL로도 구독 취소에 실패했습니다.', error);
-            });
+            console.error('구독 취소에 실패했습니다.', error);
         });
     };
     /**
