@@ -25,15 +25,16 @@ function SearchResult() {
 
     const handleSearch = async (e) => {
         if (e.type === 'click' || e.key === 'Enter') {
-            navigate(`/searchResult?query=${searchQuery}&page=0`);
-            // try {
-            //   const data = await fetchSearchResults(searchQuery, page, sort);
-            //   setSearchResults(data.result);
-            //   setCount(data.total);
+            // navigate(`/searchResult?query=${searchQuery}&page=0`);
+            try {
+              const data = await fetchSearchResults(searchQuery, page, sort);
+              console.log(data);
+              setSearchResults(data.result);
+              setCount(data.total);
             //   setPage(0);
-            // } catch (error) {
-            //   console.error('Error fetching search results:', error);
-            // }
+            } catch (error) {
+              console.error('Error fetching search results:', error);
+            }
         }
     }
 

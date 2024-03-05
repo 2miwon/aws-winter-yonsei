@@ -95,12 +95,12 @@ const SecondRoutes = () => {
               />}/>
           <Route path={URL.USERINFO} element={<UserInfo/>}/>
           <Route path="/searchResult" element={<SearchResult/>} />
-
+          
         {/* ERROR */}
         <Route path={URL.ERROR} element={<EgovError />} />
 
         <Route path="/DetailPage/:id" element={<DetailPage />} />
-
+        {/* <Route path="/file/:idx" component={YourFileComponent} /> */}
       </Routes>
       <EgovFooter />      
     </>

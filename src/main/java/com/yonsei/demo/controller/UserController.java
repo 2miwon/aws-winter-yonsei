@@ -31,7 +31,15 @@ public class UserController {
 
     @GetMapping("/name")
     public String name() {
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
-        return user.getName();
+        try {
+            SessionUser user = (SessionUser) httpSession.getAttribute("user");
+            if (user != null) {
+                return user.getName();
+            } else {
+                return "User not found";
+            }
+        } catch (Exception e) {
+            return "name Error occurred";
+        }
     }
 }

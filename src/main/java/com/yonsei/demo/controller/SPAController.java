@@ -19,4 +19,14 @@ public class SPAController {
     public String searchResult() {
         return "forward:/";
     }
+
+    // @RequestMapping("/file/**")
+    // public String file() {
+    // return "forward:/";
+    // }
+
+    // @RequestMapping("/elastic/**")
+    // public String elastic() {
+    // return "forward:/";
+    // }
 }
