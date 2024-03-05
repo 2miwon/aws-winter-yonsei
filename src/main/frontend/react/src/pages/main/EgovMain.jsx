@@ -36,7 +36,7 @@ function EgovMain(props) {
                 // const suggested = await fetchKeword(searchQuery);
                 // setSuggestedKeywords(suggested);
             } catch (error) {
-                console.error('Error fetching suggested keywords:', error);
+                console.error('Error change query:', error);
                 // setSuggestedKeywords([]);
             }
         } else {

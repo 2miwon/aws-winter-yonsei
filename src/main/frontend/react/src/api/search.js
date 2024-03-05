@@ -7,7 +7,9 @@ export const fetchSearchResults = async (query, page, sort) => {
         {
             query: {
                 match: {
-                    content: query
+                    query: query,
+                    page: page,
+                    sort: sort,
                 }
             }
         });
