@@ -9,5 +9,6 @@ COPY build/libs/aws-winter-yonsei-0.0.1.war app.war
 
 EXPOSE 8080
 
+
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.war"]

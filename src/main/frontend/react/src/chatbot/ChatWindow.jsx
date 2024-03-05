@@ -21,26 +21,13 @@ const ChatWindow = ({ messages, setMessages }) => {
         }
     };
 
-    //const BACKEND_URL = 'http://localhost:8080/gpt/gen';
-    const BACKEND_URL = 'http://52.78.206.96:8080/gpt/gen';
-    const BACKEND_URL_2 = 'https://allaw.site/gpt/gen';
-    // sendMessageToBackend 함수 수정
     const sendMessageToBackend = async (message) => {
         try {
-            // 먼저 BACKEND_URL_1을 사용하여 요청 시도
-            const response = await axios.post(BACKEND_URL, { message });
-            return response.data; // 백엔드에서 반환한 응답
+            const response = await axios.post("/gpt/gen", { message });
+            return response.data;
         } catch (error) {
-            console.error('Error sending message with BACKEND_URL_1:', error);
-            // BACKEND_URL_1에서 오류가 발생했을 경우, BACKEND_URL_2로 재시도
-            try {
-                const response = await axios.post(BACKEND_URL_2, { message });
-                return response.data; // 백엔드에서 반환한 응답 (BACKEND_URL_2 사용)
-            } catch (error) {
-                console.error('Error sending message with BACKEND_URL_2:', error);
-                // BACKEND_URL_2에서도 오류가 발생한 경우, 오류 처리
-                return { error: 'Failed to send message with both URLs' }; // 최종 오류 처리
-            }
+            console.error('Error sending message with BACKEND_URL_2:', error);
+            return { error: 'Failed to send message with both URLs' }; // 최종 오류 처리
         }
     };
 /**

@@ -40,7 +40,7 @@ const DetailPage = () => {
                 const rectangleWidth = window.innerWidth * 0.8;
                 const rectangleHeight = window.innerHeight * 0.2;
                 // const response = await axios.get(`/pdfurl/${idx}`);
-                const response = await axios.get(`/file/${idx}`)
+                const response = await axios.get(`/api/file/${idx}`)
                 WebViewer(
                     {
                         path: "/webviewer/lib/public",
