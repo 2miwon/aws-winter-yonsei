@@ -16,7 +16,7 @@ function EgovMain(props) {
     const navigate = useNavigate();
     const [docsCount, setDocsCount] = useState(0);
 
-    const handleSearch = async (e) => {
+    const handleSearch = async (e, page, sort) => {
         if (e.type === 'click' || e.key === 'Enter') {
             try {
               const data = await fetchSearchResults(searchQuery, page, sort);
@@ -25,7 +25,7 @@ function EgovMain(props) {
             } catch (error) {
               console.error('Error fetching search results:', error);
             }
-            setSearchQuery("");
+            // setSearchQuery("");
             setSuggestedKeywords([]);
         }
     };
@@ -121,15 +121,17 @@ function EgovMain(props) {
                             <ul className="tab">
                                 <li><a className={sort==="RANK" ? "on" : ""} onClick={async (e) => {
                                     setSort("RANK")
-                                    handleSearch(e, page, "RANK")
+                                    setPage(0)
+                                    handleSearch(e, 0, "RANK")
                                 }}>정확도순</a></li>
                                 <li><a className={sort==="DATE" ? "on" : ""} onClick={async (e) => {
                                     setSort("DATE");
-                                    handleSearch(e, page, "DATE")
+                                    setPage(0)
+                                    handleSearch(e, 0, "DATE")
                                 }}>최신순</a></li>
                                 {/* <li> 총 {kesword} </li> */}
                                 <li>
-                                    <div style={{display: count > 0 ? "block" : "none"}}>총 {count} 개의 검색결과</div>
+                                    <div style={{display: count > 0 ? "block" : "none"}}>총 {count} 개 {count >= 10000 ? "이상" : ""}의 검색결과</div>
                                 </li>
                             </ul>
                             <ul className="navigate">

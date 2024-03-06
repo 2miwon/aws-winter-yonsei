@@ -3,20 +3,15 @@ import axios from 'axios';
 
 export const fetchSearchResults = async (query, page, sort) => {    
     try {
-        const response = await axios.post('/api/search', 
+        const response = await axios.post('https://allaw.site/api/search', 
         {
-            query: {
-                match: {
-                    query: query,
-                    page: page,
-                    sort: sort,
-                }
-            }
+            query: query,
+            page: page,
+            sort: sort
         });
-        console.log("debug1", response.data);
       return response.data;
     } catch (error) {
-        return {error: 'Failed to send message with both URLs'};
+        return {error: 'Failed to send message'};
     }
   };
 

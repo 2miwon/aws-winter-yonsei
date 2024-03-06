@@ -40,12 +40,11 @@ const DetailPage = () => {
                 const rectangleWidth = window.innerWidth * 0.8;
                 const rectangleHeight = window.innerHeight * 0.2;
                 // const response = await axios.get(`/pdfurl/${idx}`);
-                const response = await axios.get(`/api/file/${idx}`)
                 WebViewer(
                     {
                         path: "/webviewer/lib/public",
                         licenseKey: "demo:1707201620106:7f4eafe9030000000069fe03ee7211c47e235a224e21040bb60f132600",
-                        initialDoc: response.data,
+                        initialDoc: `https://allaw.site/api/file/${idx}`,
                     },
                     viewer.current,
                 ).then((instance) => {
