@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  app:
+    image: 2miwon/allaw-temp-deploy
+    ports:
+      - "8080:8080"
+
+  web:
+    image: 2miwon/nginx_spring
+    ports:
+      - "80:80"
+      - "443:443"
