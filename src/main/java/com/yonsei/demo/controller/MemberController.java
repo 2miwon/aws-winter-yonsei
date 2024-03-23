@@ -22,7 +22,6 @@ import java.util.NoSuchElementException;
 @RequiredArgsConstructor
 public class MemberController {
 
-    private final MemberService memberService;
     private final MemberRepository memberRepository;
     private final DistrictRepository districtRepository;
     private final RegionRepository regionRepository;
