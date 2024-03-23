@@ -3,7 +3,6 @@ import {useParams} from "react-router-dom";
 import WebViewer from "@pdftron/webviewer";
 import axios from "axios";
 import '../../css/detailPage.css'
-import ChatWindow from "../../chatbot/ChatWindow";
 
 const DetailPage = () => {
     const {id} = useParams();
@@ -172,9 +171,9 @@ const DetailPage = () => {
 
                     <div className="bill-summary">
                         {!content && (
-                            <button className="summary-button" onClick={fetchSummary} disabled={isLoading}>
-                                {isLoading ? '요약 중...' : '요약 보기'}
-                            </button>)
+                        <button className="summary-button" onClick={fetchSummary} disabled={isLoading}>
+                            {isLoading ? '요약 중...' : '요약 보기'}
+                        </button>)
                         }
                         {content && (
                             <div className="summary-content">

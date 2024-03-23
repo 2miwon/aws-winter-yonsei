@@ -21,13 +21,13 @@ function EgovHeader() {
                     <h2 className="blind">주메뉴</h2>
                     <ul>
                         {/* <li><NavLink to={URL.ABOUT} className={({ isActive }) => (isActive ? "cur" : "")}>사이트소개</NavLink></li> */}
+                        <li><NavLink to={"/election"} >21대 총선</NavLink></li>
                         {isLoggedIn &&
                         <li><NavLink to={URL.USERINFO} >회원 정보</NavLink></li>
                         }
                     </ul>
                 </div>
-
-                <div className="user_info">
+                 <div className="user_info">
                     {/* 로그아웃 : 로그인 정보 있을때 */}
                     {isLoggedIn &&
                         <>
