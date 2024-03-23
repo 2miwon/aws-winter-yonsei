@@ -16,11 +16,11 @@ public class Opinion {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userId")
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bill_id")
+    @JoinColumn(name = "billsNo")
     private Bills bills;
 
     @Getter

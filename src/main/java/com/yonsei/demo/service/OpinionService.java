@@ -48,7 +48,7 @@ public class OpinionService {
                 .orElseThrow(() -> new IllegalArgumentException("bills not found"));
 
         return opinions.stream()
-                .map(opinion -> new OpinionDto(opinion.getId(),opinion.getUser().getId(),opinion.getBills().getBillNo(), opinion.getDetail(),opinion.getGrade()))
+                .map(opinion -> new OpinionDto(opinion.getId(),opinion.getUser().getName(),opinion.getBills().getBillNo(), opinion.getDetail(),opinion.getGrade()))
                 .collect(Collectors.toList());
     }
 }
