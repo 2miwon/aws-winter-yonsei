@@ -2,9 +2,9 @@
     display: flex; /* Flexbox를 사용하여 자식 요소들을 가로로 나열 */
     justify-content: space-around; /* 자식들 사이에 공간을 동일하게 배분 */
     align-items: flex-start; /* 컨테이너 상단에 자식들을 정렬 */
-    gap: 20px; /* 자식들 사이의 간격을 20px로 설정 */
+    gap: 40px; /* 자식들 사이의 간격을 20px로 설정 */
     padding: 20px; /* 컨테이너의 내부 여백을 20px로 설정 */
-    max-width: 1200px; /* 최대 너비 설정 */
+    max-width: 1600px; /* 최대 너비 설정 */
     margin: 0 auto; /* 페이지 중앙 정렬 */
 }
 
