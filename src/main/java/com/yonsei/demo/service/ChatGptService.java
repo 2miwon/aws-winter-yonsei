@@ -102,16 +102,11 @@ public class ChatGptService {
         String link = bills.getFile_link();
 
         try (BufferedInputStream in = new BufferedInputStream(new URL(link).openStream());){
+            PDDocument document = PDDocument.load(in);
+            PDFTextStripper stripper = new PDFTextStripper();
+            String extractText = stripper.getText(document);
 
-            Document pdfDocument = new Document(in);
-
-            TextAbsorber textAbsorber = new TextAbsorber();
-
-            pdfDocument.getPages().accept(textAbsorber);
-
-            String extractedText = textAbsorber.getText();
-
-            String txt = prompt + "External references include a '(출처:" + extractedText +") citation.";
+            String txt = prompt + extractText +"External references include a '(출처:" + bills.getTitle() +") citation.";
 
             ChatRequestDto request = new ChatRequestDto(chatModel, txt, ChatSystemPrompt);
 
