@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {useParams} from "react-router-dom";
 import WebViewer from "@pdftron/webviewer";
 import axios from "axios";
+import Chart from "chart.js/auto";
 import '../../css/detailPage.css'
 
 const DetailPage = () => {
@@ -70,21 +71,67 @@ const DetailPage = () => {
         fetchOpinions();
     }, [idx]);
 
+    // useEffect(() => {
+    //     if (opinions.length > 0) {
+    //         drawOpinionRatioChart();
+    //     }
+    // }, [opinions]);
+    //
+    // const drawOpinionRatioChart = () => {
+    //     const positiveCount = opinions.filter(opinion => opinion.grade === 0).length;
+    //     const negativeCount = opinions.filter(opinion => opinion.grade === 1).length;
+    //     const totalCount = positiveCount + negativeCount;
+    //
+    //     const positiveRatio = (positiveCount / totalCount) * 100;
+    //     const negativeRatio = (negativeCount / totalCount) * 100;
+    //
+    //     const ctx = document.getElementById('opinionRatioChart').getContext('2d');
+    //
+    //     new Chart(ctx, {
+    //         type: 'horizontalBar',
+    //         data: {
+    //             labels: ['Positive', 'Negative'],
+    //             datasets: [{
+    //                 data: [positiveRatio, negativeRatio],
+    //                 backgroundColor: [
+    //                     'rgba(75, 192, 192, 0.2)', // Positive
+    //                     'rgba(255, 99, 132, 0.2)'  // Negative
+    //                 ],
+    //                 borderColor: [
+    //                     'rgba(75, 192, 192, 1)',
+    //                     'rgba(255, 99, 132, 1)'
+    //                 ],
+    //                 borderWidth: 1
+    //             }]
+    //         },
+    //         options: {
+    //             indexAxis: 'y',
+    //             responsive: true,
+    //             scales: {
+    //                 x: {
+    //                     beginAtZero: true,
+    //                     max: 100
+    //                 }
+    //             }
+    //         }
+    //     });
+    // };
+
     const renderOpinions = () => {
         return (
             <div>
                 <h3>의견 목록</h3>
                 <ul style={{ textAlign: "center", listStyleType: "none", padding: 0 }}>
                     {opinions.map((opinion, index) => (
-                        <li key={index} style={{ display: "flex", justifyContent: "center", margin: "10px 0" }}>
-                            <div style={{ flex: 1, textAlign: "left" }}>
+                        <li key={index} style={{display: "flex", justifyContent: "center", margin: "10px 0"}}>
+                            <div style={{flex: 2, textAlign: "left"}}>
                                 <strong>작성자:</strong> {opinion.userName}
                             </div>
-                            <div style={{ flex: 1, textAlign: "left" }}>
-                                <strong></strong> <span className={getGradeLabel(opinion.grade)} />
-                            </div>
-                            <div style={{ flex: 2, textAlign: "left" }}>
+                            <div style={{flex: 3, textAlign: "left"}}>
                                 <strong>내용:</strong> {opinion.detail}
+                            </div>
+                            <div style={{flex: 1, textAlign: "left"}}>
+                                <strong></strong> <span className={getGradeLabel(opinion.grade)}/>
                             </div>
                         </li>
                     ))}
@@ -143,6 +190,18 @@ const DetailPage = () => {
         }
     };
 
+    const calculatePositiveRatio = () => {
+        const positiveCount = opinions.filter(opinion => opinion.grade === 0).length;
+        const totalCount = opinions.length;
+        return (positiveCount / totalCount) * 100;
+    };
+
+    const calculateNegativeRatio = () => {
+        const negativeCount = opinions.filter(opinion => opinion.grade === 1).length;
+        const totalCount = opinions.length;
+        return (negativeCount / totalCount) * 100;
+    };
+
     return (
         <div className="detail-page">
             <h1 className="detail-page-title">{bill.name}</h1>
@@ -171,9 +230,9 @@ const DetailPage = () => {
 
                     <div className="bill-summary">
                         {!content && (
-                        <button className="summary-button" onClick={fetchSummary} disabled={isLoading}>
-                            {isLoading ? '요약 중...' : '요약 보기'}
-                        </button>)
+                            <button className="summary-button" onClick={fetchSummary} disabled={isLoading}>
+                                {isLoading ? '요약 중...' : '요약 보기'}
+                            </button>)
                         }
                         {content && (
                             <div className="summary-content">
@@ -181,6 +240,37 @@ const DetailPage = () => {
                                 {renderContentWithBreaks(content)}
                             </div>
                         )}
+                    </div>
+
+                    <div className="opinion-ratio-chart">
+                        <h3>긍정/부정 비율</h3>
+                        <div style={{display: "flex", alignItems: "center"}}>
+                            <div style={{marginRight: "10px", width: "50px"}}>긍정</div>
+                            <div style={{flex: 1}}>
+                                <div style={{
+                                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                    width: `${calculatePositiveRatio()}%`,
+                                    height: "20px"
+                                }}></div>
+                            </div>
+                            <div>{`${calculatePositiveRatio()}%`}</div>
+                        </div>
+                        <div style={{display: "flex", alignItems: "center"}}>
+                            <div style={{marginRight: "10px", width: "50px"}}>부정</div>
+                            <div style={{flex: 1}}>
+                                <div style={{
+                                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                    width: `${calculateNegativeRatio()}%`,
+                                    height: "20px"
+                                }}></div>
+                            </div>
+                            <div>{`${calculateNegativeRatio()}%`}</div>
+                        </div>
+                        <div style={{height: "20px"}}></div>
+                    </div>
+
+                    <div className="opinion-write-text">
+                        <h3>의견 작성</h3>
                     </div>
 
                     <div className="opinion-form">
@@ -219,6 +309,8 @@ const DetailPage = () => {
                             </div>
                         </form>
                     </div>
+
+                    <div style={{height: "20px"}}></div>
 
                     {opinions.length > 0 && renderOpinions()} {/* opinions 배열이 비어있지 않으면 의견 목록을 표시 */}
 
