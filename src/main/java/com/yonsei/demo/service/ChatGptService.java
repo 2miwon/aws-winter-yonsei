@@ -44,6 +44,12 @@ public class ChatGptService {
     @Value("${openai.api-url}")
     private String apiUrl;
 
+    @Value("${openai.agree-system-prompt")
+    private String AgreeSystemPrompt;
+
+    @Value("${openai.disagree-system-prompt")
+    private String DisagreeSystemPrompt;
+
 
     public String chat(String prompt) {
         // create a request
@@ -115,5 +121,36 @@ public class ChatGptService {
         catch (IOException ignored) {
             return "No response";
         }
+    }
+
+    public String agree(String prompt, String pdf) {
+        String system = AgreeSystemPrompt + pdf;
+        // create a request
+        ChatRequestDto request = new ChatRequestDto(model, prompt, system);
+
+        // call the API
+        ChatResponseDto response = restTemplate.postForObject(apiUrl, request, ChatResponseDto.class);
+
+        if (response == null || response.getChoices() == null || response.getChoices().isEmpty()) {
+            return "No response";
+        }
+
+        // return the first response
+        return response.getChoices().get(0).getMessage().getContent();
+    }
+    public String disagree(String prompt, String pdf) {
+        String system = DisagreeSystemPrompt + pdf;
+        // create a request
+        ChatRequestDto request = new ChatRequestDto(model, prompt, system);
+
+        // call the API
+        ChatResponseDto response = restTemplate.postForObject(apiUrl, request, ChatResponseDto.class);
+
+        if (response == null || response.getChoices() == null || response.getChoices().isEmpty()) {
+            return "No response";
+        }
+
+        // return the first response
+        return response.getChoices().get(0).getMessage().getContent();
     }
 }

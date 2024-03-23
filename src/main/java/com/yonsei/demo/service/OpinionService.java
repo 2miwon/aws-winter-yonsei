@@ -44,7 +44,7 @@ public class OpinionService {
     public List<OpinionDto> opinions(int billsNo) {
         Bills bill = billsRepository.findByBillNo(billsNo)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid billsId"));
-        List<Opinion> opinions = opinionRepository.findAllByBillsId(billsNo)
+        List<Opinion> opinions = opinionRepository.findByBillsId(billsNo)
                 .orElseThrow(() -> new IllegalArgumentException("bills not found"));
 
         return opinions.stream()

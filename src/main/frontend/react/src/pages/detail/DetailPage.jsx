@@ -16,14 +16,18 @@ const DetailPage = () => {
         date: ''
     });
     const [content, setContent] = useState();
+    const [opinionDetail, setOpinionDetail] = useState('');
+    const [opinionType, setOpinionType] = useState(0); // 기본값을 0으로 설정
+    const [opinions, setOpinions] = useState([]);
+
 
     useEffect(() => {
         const fetchBillDetails = async () => {
             try{
                 const response = await axios.get(
                     `https://open.assembly.go.kr/portal/openapi/TVBPMBILL11?TYPE=json&BILL_NO=${idx}`
-                  );
-                  const data = response.data.TVBPMBILL11[1].row[0];
+                );
+                const data = response.data.TVBPMBILL11[1].row[0];
                 setBill({
                     ...bill,
                     name: data.BILL_NAME,
@@ -34,8 +38,8 @@ const DetailPage = () => {
                 console.error('법안 정보를 불러오는 데 실패했습니다.', error);
             }
         };
-    
-        const fetchPdf = async() => {
+
+        const fetchPdf = async () => {
             try {
                 WebViewer(
                     {
@@ -50,11 +54,56 @@ const DetailPage = () => {
             } catch (error) {
                 console.error("Failed to fetch PDF URL:", error);
             }
-    };
+        };
+
+        const fetchOpinions = async () => {
+            try {
+                const response = await axios.get(`/opinions?billsNo=${idx}`);
+                setOpinions(response.data);
+            } catch (error) {
+                console.error('의견을 불러오는 데 실패했습니다.', error);
+            }
+        };
 
         fetchBillDetails();
         fetchPdf();
+        fetchOpinions();
     }, [idx]);
+
+    const renderOpinions = () => {
+        return (
+            <div>
+                <h3>의견 목록</h3>
+                <ul style={{ textAlign: "center", listStyleType: "none", padding: 0 }}>
+                    {opinions.map((opinion, index) => (
+                        <li key={index} style={{ display: "flex", justifyContent: "center", margin: "10px 0" }}>
+                            <div style={{ flex: 1, textAlign: "left" }}>
+                                <strong>작성자:</strong> {opinion.userName}
+                            </div>
+                            <div style={{ flex: 1, textAlign: "left" }}>
+                                <strong></strong> <span className={getGradeLabel(opinion.grade)} />
+                            </div>
+                            <div style={{ flex: 2, textAlign: "left" }}>
+                                <strong>내용:</strong> {opinion.detail}
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        );
+    };
+
+
+    const getGradeLabel = (grade) => {
+        switch (grade) {
+            case 0:
+                return 'thumbs-up'; // 긍정을 나타내는 CSS 클래스 이름
+            case 1:
+                return 'thumbs-down'; // 부정을 나타내는 CSS 클래스 이름
+            default:
+                return '평가 등급 선택';
+        }
+    };
 
     const [isLoading, setIsLoading] = useState(false);
     const fetchSummary = async () => {
@@ -77,7 +126,24 @@ const DetailPage = () => {
         ));
     };
 
-        return (
+    const submitOpinion = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post(`/makeOpinion`, {
+                billsNo : bill.id,
+                detail: opinionDetail,
+                grade: opinionType
+            });
+            console.log('Opinion submitted:', response.data);
+            setOpinionDetail('');
+            setOpinionType(0);
+        } catch (error) {
+            console.error('Opinion submission failed:', error);
+        }
+    };
+
+    return (
         <div className="detail-page">
             <h1 className="detail-page-title">{bill.name}</h1>
             <div className="colbox">
@@ -116,6 +182,46 @@ const DetailPage = () => {
                             </div>
                         )}
                     </div>
+
+                    <div className="opinion-form">
+                        <form onSubmit={submitOpinion}>
+                            <div className="form-group">
+                            <textarea
+                                id="opinionDetail"
+                                value={opinionDetail}
+                                onChange={(e) => setOpinionDetail(e.target.value)}
+                                placeholder="의견을 입력하세요"
+                                required
+                            />
+                            </div>
+                            <div className="controls">
+                                <div className="form-group">
+                                    <label className="thumbs-up-label">
+                                        <input
+                                            type="radio"
+                                            value={0}
+                                            checked={opinionType === 0}
+                                            onChange={() => setOpinionType(0)}
+                                        />
+                                    </label>
+                                </div>
+                                <div className="form-group">
+                                    <label className="thumbs-down-label">
+                                        <input
+                                            type="radio"
+                                            value={1}
+                                            checked={opinionType === 1}
+                                            onChange={() => setOpinionType(1)}
+                                        />
+                                    </label>
+                                </div>
+                                <button type="submit">작성</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    {opinions.length > 0 && renderOpinions()} {/* opinions 배열이 비어있지 않으면 의견 목록을 표시 */}
+
                 </div>
             </div>
         </div>

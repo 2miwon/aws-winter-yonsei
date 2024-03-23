@@ -28,4 +28,13 @@ public class ChatGptController {
         return chatGptService.checkChat(prompt,billsNum);
     }
 
+    @PostMapping("agree")
+    public String agree(@RequestBody String prompt, String pdf){
+        return chatGptService.agree(prompt, pdf);
+    }
+
+    @PostMapping("disagree")
+    public String disagree(@RequestBody String prompt, String pdf){
+        return chatGptService.disagree(prompt, pdf);
+    }
 }

@@ -109,3 +109,66 @@
     color: #333;
     width: 120px; /* 고정 너비를 주어 라벨들이 일정하게 정렬되도록 함 */
 }
+
+.opinion-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.opinion-form form {
+    display: flex;
+    align-items: center;
+}
+
+.opinion-form textarea {
+    width: 100%;
+    margin-right: 290px;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+}
+
+.form-group {
+    margin-right: 10px;
+}
+
+label {
+    margin-right: 5px;
+}
+
+.opinion-form button[type="submit"] {
+    font-size: 1.3em;
+}
+
+.thumbs-up {
+    width: 20px; /* 이미지의 너비 */
+    height: 20px; /* 이미지의 높이 */
+    display: inline-block; /* 이미지를 inline 요소로 표시합니다. */
+    background-image: url('./images/thumbs-up.png'); /* 상대 경로를 사용하여 이미지를 참조합니다. */
+    background-size: cover; /* 배경 이미지를 커버로 조정합니다. */
+}
+
+.thumbs-down {
+    width: 20px; /* 이미지의 너비 */
+    height: 20px; /* 이미지의 높이 */
+    display: inline-block; /* 이미지를 inline 요소로 표시합니다. */
+    background-image: url('./images/thumbs-down.png'); /* 상대 경로를 사용하여 이미지를 참조합니다. */
+    background-size: cover; /* 배경 이미지를 커버로 조정합니다. */
+}
+
+.thumbs-up-label {
+    display: inline-block;
+    padding-left: 25px; /* 이미지 너비 + 여백 */
+    background: url('./images/thumbs-up.png') no-repeat left center;
+    background-size: 20px 20px; /* 이미지 너비 높이 */
+}
+
+.thumbs-down-label {
+    display: inline-block;
+    padding-left: 25px; /* 이미지 너비 + 여백 */
+    background: url('./images/thumbs-down.png') no-repeat left center;
+    background-size: 20px 20px; /* 이미지 너비 높이 */
+}
