@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OpinionDto {
     private Long id;
-    private Long userId;
+    private String userName;
     private int billsNo;
     private String detail;
     private int grade;
