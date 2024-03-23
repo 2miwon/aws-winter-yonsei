@@ -1,49 +1,62 @@
-.election-chat-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
+.election-container {
+    display: flex; /* Flexbox를 사용하여 자식 요소들을 가로로 나열 */
+    justify-content: space-around; /* 자식들 사이에 공간을 동일하게 배분 */
+    align-items: flex-start; /* 컨테이너 상단에 자식들을 정렬 */
+    gap: 20px; /* 자식들 사이의 간격을 20px로 설정 */
+    padding: 20px; /* 컨테이너의 내부 여백을 20px로 설정 */
+    max-width: 1200px; /* 최대 너비 설정 */
+    margin: 0 auto; /* 페이지 중앙 정렬 */
+}
+
+.election-chat-container, .election-pledge-container {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 그림자 효과 추가 */
+    border-radius: 10px; /* 모서리 둥글게 */
+    background-color: #fff; /* 배경색 통일 */
     padding: 20px;
-    gap: 20px; /* 컴포넌트 간의 간격 */
+    overflow-y: auto; /* 필요시 내부 스크롤 */
+    height: 600px; /* 고정 높이 설정 */
+}
+.election-chat-container {
+    flex: 1; /* 유연한 크기 조정 */
 }
 
-.chat-container {
-    width: 30%;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
+.election-pledge-container {
+    flex: 1.5; /* 공약 부분을 더 넓게 설정 */
+    padding: 30px; /* 내부 여백 더 추가 */
+    background-color: #f9f9f9; /* 배경색 구분 */
 }
 
-.chat-title {
+
+.election-chat-title {
     background-color: #007bff;
     color: white;
     padding: 10px;
     text-align: center;
     font-size: 18px;
+    border-radius: 10px; /* 모서리 둥글게 */
+
 }
 
-.chat-content {
+.election-chat-content {
     flex-grow: 1;
     overflow-y: auto;
     padding: 10px;
     background-color: #f9f9f9;
 }
 
-.message-container {
+.election-message-container {
     margin-bottom: 10px;
 }
 
-.message-user-container {
+.election-message-user-container {
     text-align: right;
 }
 
-.message-bot-container {
+.election-message-bot-container {
     text-align: left;
 }
 
-.message {
+.election-message {
     display: inline-block;
     padding: 8px 12px;
     border-radius: 20px;
@@ -51,21 +64,21 @@
     word-wrap: break-word;
 }
 
-.message-user {
+.election-message-user {
     background-color: #dcf8c6;
 }
 
-.message-bot {
+.election-message-bot {
     background-color: #ebebeb;
 }
 
-.chat-input {
+.election-chat-input {
     padding: 10px;
     background-color: #eee;
     display: flex;
 }
 
-.chat-input input {
+.election-chat-input input {
     flex-grow: 1;
     padding: 8px;
     margin-right: 10px;
@@ -73,7 +86,7 @@
     border-radius: 20px;
 }
 
-.chat-input button {
+.election-chat-input button {
     padding: 8px 16px;
     background-color: #007bff;
     color: white;
@@ -82,19 +95,13 @@
     cursor: pointer;
 }
 
-.pledge-container {
-    width: 30%;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #fff;
-}
 
-.pledge-container h2 {
+
+.election-pledge-container h2 {
     margin-bottom: 20px;
     color: #007bff;
 }
 
-.pledge-container p {
+.election-pledge-container p {
     white-space: pre-wrap; /* 공약 텍스트의 줄바꿈과 공백 유지 */
 }

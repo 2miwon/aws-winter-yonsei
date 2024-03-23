@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import '../../css/ElectionChat.css'; // 스타일을 위한 CSS 파일
+import '../../css/ElectionChat.css';
 
 const ChatComponent = ({ endpoint, title, pledge }) => {
     const [messages, setMessages] = useState([]);
@@ -27,18 +27,18 @@ const ChatComponent = ({ endpoint, title, pledge }) => {
     };
 
     return (
-        <div className="chat-container">
-            <div className="chat-title">{title}</div>
-            <div className="chat-content">
+        <div className="election-chat-container">
+            <div className="election-chat-title">{title}</div>
+            <div className="election-chat-content">
                 {messages.map((message, index) => (
-                    <div key={index} className={`message-container ${message.type === 'user' ? 'message-user-container' : 'message-bot-container'}`}>
-                        <div className={`message ${message.type === 'user' ? 'message-user' : 'message-bot'}`}>
+                    <div key={index} className={`election-message-container ${message.type === 'user' ? 'election-message-user-container' : 'election-message-bot-container'}`}>
+                        <div className={`election-message ${message.type === 'user' ? 'election-message-user' : 'election-message-bot'}`}>
                             {message.text}
                         </div>
                     </div>
                 ))}
             </div>
-            <form onSubmit={handleMessageSubmit} className="chat-input">
+            <form onSubmit={handleMessageSubmit} className="election-chat-input">
                 <input type="text" name="message" placeholder="Type a message..." />
                 <button type="submit">Send</button>
             </form>
@@ -47,10 +47,11 @@ const ChatComponent = ({ endpoint, title, pledge }) => {
 };
 
 const ElectionChat = ({ candidateInfo }) => {
+    // console.log("candidateInfo: ", candidateInfo);
     return (
-        <div className="election-chat-container">
+        <div className="election-container">
             <ChatComponent endpoint="agree" title="찬성 의견" pledge={candidateInfo.pledge} />
-            <div className="pledge-container">
+            <div className="election-pledge-container">
                 <h2>{candidateInfo.name} ({candidateInfo.party})</h2>
                 <p>{candidateInfo.pledge}</p>
             </div>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import '../../css/Election.css';
 import ElectionChat from "./ElectionChat";
 
@@ -36,6 +35,7 @@ const Election = () => {
 ];
     useEffect(() => {
         setCandidate(candidates[0]);
+        // console.log("candidate: ", candidate);
     }, [candidate]);
 
     const renderContentWithBreaks = (content) => {
@@ -45,54 +45,13 @@ const Election = () => {
     };
 
         return (
-        <div className="page">
+        <div>
             <div className="title">
-                <img src="/assets/images/vote.svg" />
+                {/*<img src="/assets/images/vote.svg" />*/}
                 <h1>광주광역시 북구을</h1>
             </div>
-            
-            <div className="middle">
-                
-            </div>
 
-            <div className="colbox">
-                <div className="left_col">
-                    <div style={{width: "100%"}}>
-                    </div>
-                </div>
-                <div className="right_col">
-                    <div className="bill-info">
-                        <h2 className="bill-info-title">법안 정보</h2>
-                        <div className="bill-info-detail">
-                            <span className="detail-label">법안 번호:</span> {bill.id}
-                        </div>
-                        <div className="bill-info-detail">
-                            <span className="detail-label">법안 제목:</span> {bill.name}
-                        </div>
-                        <div className="bill-info-detail">
-                            <span className="detail-label">대표 발의자:</span> {bill.proposer}
-                        </div>
-                        <div className="bill-info-detail">
-                            <span className="detail-label">발의일:</span> {bill.date}
-                        </div>
-                    </div>
-
-                    <div className="bill-summary">
-                        {!content && (
-                        <button className="summary-button" onClick={fetchSummary} disabled={isLoading}>
-                            {isLoading ? '요약 중...' : '요약 보기'}
-                        </button>)
-                        }
-                        {content && (
-                            <div className="summary-content">
-                                <h3 className="summary-title">요약 내용</h3>
-                                {renderContentWithBreaks(content)}
-                            </div>
-                        )}
-                    </div>
-                </div>
-            </div>
-            <ElectionChat candidateInfo={candidate}/>
+            <ElectionChat candidateInfo={candidates[0]}/>
         </div>
     );
 };
