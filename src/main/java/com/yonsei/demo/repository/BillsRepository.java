@@ -8,7 +8,8 @@ import java.util.Optional;
 
 public interface BillsRepository extends JpaRepository<Bills, Integer> {
 
-    Optional<Bills> findById(Integer id);
+    Optional<Bills> findByBillNo(Integer billNo);
+
     @Query("SELECT COUNT(b) FROM Bills b")
     long countAll();
 }

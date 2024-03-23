@@ -17,6 +17,6 @@ public interface OpinionRepository extends JpaRepository<Opinion, Long> {
 //    @Query("SELECT s.user FROM Subscription s WHERE s.keyword.id = :keywordId")
 //    Optional<List<User>> findAllUsersByKeyword(Long keywordId);
 //
-    @Query("SELECT o FROM Opinion o WHERE o.bills.bill_id = :billsId")
-    Optional<List<Opinion>> findAllByBillsId(@Param("billsId") Long billsId);
+    @Query("SELECT o FROM Opinion o WHERE o.bills.billNo = :billsNo")
+    Optional<List<Opinion>> findAllByBillsId(@Param("billsNo") int billsNo);
 }

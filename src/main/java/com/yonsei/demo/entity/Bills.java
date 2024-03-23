@@ -10,9 +10,9 @@ import java.time.ZonedDateTime;
 @Entity
 public class Bills {
     @Id
-    private Integer bill_no;
+    private Integer billNo;
 
-    private String bill_id;
+    private String billId;
 
     private String title;
 

@@ -30,10 +30,10 @@ public class OpinionService {
     }
 
     @Transactional
-    public void makeOpinion(String userEmail, String billsId, String detail, int grade) {
+    public void makeOpinion(String userEmail, int billsNo, String detail, int grade) {
         User user = userRepository.findByEmail(userEmail)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user ID"));
-        Bills bill = billsRepository.findById(Integer.getInteger(billsId))
+        Bills bill = billsRepository.findByBillNo(billsNo)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid billsId"));
 
         Opinion opinion = new Opinion(user, bill, detail, grade);
@@ -41,14 +41,14 @@ public class OpinionService {
     }
 
     @Transactional
-    public List<OpinionDto> opinions(String billsId) {
-        Bills bill = billsRepository.findById(Integer.getInteger(billsId))
+    public List<OpinionDto> opinions(int billsNo) {
+        Bills bill = billsRepository.findByBillNo(billsNo)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid billsId"));
-        List<Opinion> opinions = opinionRepository.findAllByBillsId(Long.parseLong(String.valueOf(billsId)))
+        List<Opinion> opinions = opinionRepository.findAllByBillsId(billsNo)
                 .orElseThrow(() -> new IllegalArgumentException("bills not found"));
 
         return opinions.stream()
-                .map(opinion -> new OpinionDto(opinion.getId(),opinion.getUser().getId(),opinion.getBills().getBill_id(), opinion.getDetail(),opinion.getGrade()))
+                .map(opinion -> new OpinionDto(opinion.getId(),opinion.getUser().getId(),opinion.getBills().getBillNo(), opinion.getDetail(),opinion.getGrade()))
                 .collect(Collectors.toList());
     }
 }

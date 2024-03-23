@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OpinionDto {
-    private Long Id;
+    private Long id;
     private Long userId;
-    private String billsId;
+    private int billsNo;
     private String detail;
     private int grade;
 }

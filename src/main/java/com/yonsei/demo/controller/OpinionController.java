@@ -37,14 +37,14 @@ public class OpinionController {
             return new ResponseEntity<>("사용자가 로그인하지 않았습니다.", HttpStatus.UNAUTHORIZED);
         }
 
-        opinionService.makeOpinion(user.getEmail(), opinionDto.getBillsId(), opinionDto.getDetail(), opinionDto.getGrade());
+        opinionService.makeOpinion(user.getEmail(), opinionDto.getBillsNo(), opinionDto.getDetail(), opinionDto.getGrade());
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/opinions")
-    public ResponseEntity<?> opinions(String billsId) {
-        List<OpinionDto> opinionDtos = opinionService.opinions(billsId);
+    public ResponseEntity<?> opinions(int billsNo) {
+        List<OpinionDto> opinionDtos = opinionService.opinions(billsNo);
         return new ResponseEntity<>(opinionDtos, HttpStatus.OK);
     }
 }
