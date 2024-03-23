@@ -2,12 +2,32 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 800px;
+    max-width: 1600px;
     margin: 0 auto;
     padding: 20px;
     font-family: Arial, sans-serif;
 }
 
+.colbox>* {
+    float: left;
+}
+
+.colbox::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.left_col {
+    width: 620px;
+    margin-right: 60px;
+    padding-top: 30px;
+}
+
+.right_col {
+    width: 620px;
+    padding-top: 25px;
+}
 .detail-page-title {
     margin-bottom: 30px;
     color: #333;

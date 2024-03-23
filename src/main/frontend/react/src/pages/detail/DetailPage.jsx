@@ -37,9 +37,6 @@ const DetailPage = () => {
     
         const fetchPdf = async() => {
             try {
-                const rectangleWidth = window.innerWidth * 0.8;
-                const rectangleHeight = window.innerHeight * 0.2;
-                // const response = await axios.get(`/pdfurl/${idx}`);
                 WebViewer(
                     {
                         path: "/webviewer/lib/public",
@@ -48,19 +45,7 @@ const DetailPage = () => {
                     },
                     viewer.current,
                 ).then((instance) => {
-                    const { documentViewer, annotationManager, Annotations } = instance.Core;
-                    documentViewer.addEventListener("documentLoaded", () => {
-                        const rectangleAnnot = new Annotations.RectangleAnnotation({
-                            PageNumber: 1,
-                            X: 0,
-                            Y: 0,
-                            Width: rectangleWidth,
-                            Height: rectangleHeight,
-                            Author: annotationManager.getCurrentUser(),
-                        });
-                        annotationManager.addAnnotation(rectangleAnnot);
-                        annotationManager.redrawAnnotation(rectangleAnnot);
-                    });
+
                 });
             } catch (error) {
                 console.error("Failed to fetch PDF URL:", error);
@@ -95,39 +80,43 @@ const DetailPage = () => {
         return (
         <div className="detail-page">
             <h1 className="detail-page-title">{bill.name}</h1>
-            <div className="bill-info">
-                <h2 className="bill-info-title">법안 정보</h2>
-                <div className="bill-info-detail">
-                    <span className="detail-label">법안 번호:</span> {bill.id}
-                </div>
-                <div className="bill-info-detail">
-                    <span className="detail-label">법안 제목:</span> {bill.name}
-                </div>
-                <div className="bill-info-detail">
-                    <span className="detail-label">대표 발의자:</span> {bill.proposer}
-                </div>
-                <div className="bill-info-detail">
-                    <span className="detail-label">발의일:</span> {bill.date}
-                </div>
-            </div>
-
-            <div className="bill-summary">
-                {!content && (
-                <button className="summary-button" onClick={fetchSummary} disabled={isLoading}>
-                    {isLoading ? '요약 중...' : '요약 보기'}
-                </button>)
-                }
-                {content && (
-                    <div className="summary-content">
-                        <h3 className="summary-title">요약 내용</h3>
-                        {renderContentWithBreaks(content)}
+            <div className="colbox">
+                <div className="left_col">
+                    <div style={{width: "100%"}}>
+                        <div className="webviewer" ref={viewer} style={{height: "100vh"}}></div>
                     </div>
-                )}
-            </div>
+                </div>
+                <div className="right_col">
+                    <div className="bill-info">
+                        <h2 className="bill-info-title">법안 정보</h2>
+                        <div className="bill-info-detail">
+                            <span className="detail-label">법안 번호:</span> {bill.id}
+                        </div>
+                        <div className="bill-info-detail">
+                            <span className="detail-label">법안 제목:</span> {bill.name}
+                        </div>
+                        <div className="bill-info-detail">
+                            <span className="detail-label">대표 발의자:</span> {bill.proposer}
+                        </div>
+                        <div className="bill-info-detail">
+                            <span className="detail-label">발의일:</span> {bill.date}
+                        </div>
+                    </div>
 
-            {/* PDF 뷰어 구성 부분은 여기에 추가 */}
-            <div style={{width: "100%"}}>
-                <div className="webviewer" ref={viewer} style={{height: "100vh"}}></div>
+                    <div className="bill-summary">
+                        {!content && (
+                        <button className="summary-button" onClick={fetchSummary} disabled={isLoading}>
+                            {isLoading ? '요약 중...' : '요약 보기'}
+                        </button>)
+                        }
+                        {content && (
+                            <div className="summary-content">
+                                <h3 className="summary-title">요약 내용</h3>
+                                {renderContentWithBreaks(content)}
+                            </div>
+                        )}
+                    </div>
+                </div>
             </div>
         </div>
     );
