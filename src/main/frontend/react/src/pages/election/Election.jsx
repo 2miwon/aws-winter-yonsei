@@ -9,6 +9,9 @@ const Election = () => {
 
     const [selectedImage, setSelectedImage] = useState(0);
 
+    const party = ["더불어민주당", "민생당", "정의당", "민중당", "국가혁명배당금당", "기독자유통일당", "무소속", "무소속"];
+    const name = ["이형석", "최경환", "황순영", "윤인호", "이재욱", "강휘중", "노남수", "김원갑"];
+
     const [bill, setBill] = useState({
         id: idx,
         name: '',
@@ -45,14 +48,33 @@ const Election = () => {
             </div>
             
             <div className="middle">
-                {Array.from({ length: 8 }, (_, i) => (
-                <img
-                    key={i}
-                    src={`/assets/images/${i + 1}.png`}
-                    className={selectedImage === i + 1 ? 'selected' : ''}
-                    alt={`Image ${i + 1}`}
-                  />
-                ))}
+                    {Array.from({ length: 7 }, (_, i) => (
+                        <div className="block">
+                            <img
+                                key={i}
+                                src={`/assets/images/${i + 1}.png`}
+                                className={selectedImage === i + 1 ? 'selected' : ''}
+                                alt={`Image ${i + 1}`}
+                              />
+                              <div className="info">
+                                {i+1}
+                                <div className="inner">
+                                    <div style={{ fontSize: '20px' }}>{party[i]}</div>
+                                    <div >{name[i]}</div>
+                                </div>
+                              </div>
+                        </div>
+                    ))}
+                    {/* {Array.from({ length: 7 }, (_, i) => (
+                        <div className="shadow">
+                            <img
+                                key={i}
+                                src={`/assets/images/${i + 1}.png`}
+                                className={selectedImage === i + 1 ? 'selected' : ''}
+                                alt={`Image ${i + 1}`}
+                              />
+                        </div>
+                    ))} */}
             </div>
 
             <div className="colbox">
@@ -61,35 +83,7 @@ const Election = () => {
                     </div>
                 </div>
                 <div className="right_col">
-                    <div className="bill-info">
-                        <h2 className="bill-info-title">법안 정보</h2>
-                        <div className="bill-info-detail">
-                            <span className="detail-label">법안 번호:</span> {bill.id}
-                        </div>
-                        <div className="bill-info-detail">
-                            <span className="detail-label">법안 제목:</span> {bill.name}
-                        </div>
-                        <div className="bill-info-detail">
-                            <span className="detail-label">대표 발의자:</span> {bill.proposer}
-                        </div>
-                        <div className="bill-info-detail">
-                            <span className="detail-label">발의일:</span> {bill.date}
-                        </div>
-                    </div>
-
-                    <div className="bill-summary">
-                        {!content && (
-                        <button className="summary-button" onClick={fetchSummary} disabled={isLoading}>
-                            {isLoading ? '요약 중...' : '요약 보기'}
-                        </button>)
-                        }
-                        {content && (
-                            <div className="summary-content">
-                                <h3 className="summary-title">요약 내용</h3>
-                                {renderContentWithBreaks(content)}
-                            </div>
-                        )}
-                    </div>
+                    
                 </div>
             </div>
         </div>
