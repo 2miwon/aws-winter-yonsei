@@ -1,0 +1,100 @@
+.election-chat-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px; /* 컴포넌트 간의 간격 */
+}
+
+.chat-container {
+    width: 30%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.chat-title {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.chat-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.message-container {
+    margin-bottom: 10px;
+}
+
+.message-user-container {
+    text-align: right;
+}
+
+.message-bot-container {
+    text-align: left;
+}
+
+.message {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 20px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.message-user {
+    background-color: #dcf8c6;
+}
+
+.message-bot {
+    background-color: #ebebeb;
+}
+
+.chat-input {
+    padding: 10px;
+    background-color: #eee;
+    display: flex;
+}
+
+.chat-input input {
+    flex-grow: 1;
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.chat-input button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.pledge-container {
+    width: 30%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.pledge-container h2 {
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+.pledge-container p {
+    white-space: pre-wrap; /* 공약 텍스트의 줄바꿈과 공백 유지 */
+}
