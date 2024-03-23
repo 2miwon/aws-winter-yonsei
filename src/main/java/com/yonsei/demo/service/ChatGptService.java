@@ -44,11 +44,18 @@ public class ChatGptService {
     @Value("${openai.api-url}")
     private String apiUrl;
 
-    @Value("${openai.agree-system-prompt")
+    @Value("${openai.agree-system-prompt}")
     private String AgreeSystemPrompt;
 
-    @Value("${openai.disagree-system-prompt")
+    @Value("${openai.disagree-system-prompt}")
     private String DisagreeSystemPrompt;
+
+    @Value("${openai.agree-model}")
+    private String AgreeModel;
+
+    @Value("${openai.disagree-model}")
+    private String DisagreeModel;
+
 
 
     public String chat(String prompt) {
@@ -126,7 +133,7 @@ public class ChatGptService {
     public String agree(String prompt, String pdf) {
         String system = AgreeSystemPrompt + pdf;
         // create a request
-        ChatRequestDto request = new ChatRequestDto(model, prompt, system);
+        ChatRequestDto request = new ChatRequestDto(AgreeModel, prompt, system);
 
         // call the API
         ChatResponseDto response = restTemplate.postForObject(apiUrl, request, ChatResponseDto.class);
@@ -141,7 +148,7 @@ public class ChatGptService {
     public String disagree(String prompt, String pdf) {
         String system = DisagreeSystemPrompt + pdf;
         // create a request
-        ChatRequestDto request = new ChatRequestDto(model, prompt, system);
+        ChatRequestDto request = new ChatRequestDto(DisagreeModel, prompt, system);
 
         // call the API
         ChatResponseDto response = restTemplate.postForObject(apiUrl, request, ChatResponseDto.class);

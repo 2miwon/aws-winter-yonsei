@@ -1,12 +1,18 @@
 {
   "files": {
+<<<<<<< Updated upstream
     "main.css": "/static/css/main.f6d0ed7a.css",
     "main.js": "/static/js/main.f64534e2.js",
+=======
+    "main.css": "/static/css/main.736ff148.css",
+    "main.js": "/static/js/main.fb74cd62.js",
+>>>>>>> Stashed changes
     "static/js/787.2b5315be.chunk.js": "/static/js/787.2b5315be.chunk.js",
     "static/media/bg_ds_t2.png": "/static/media/bg_ds_t2.58237ebb555d4247052c.png",
     "static/media/thumbs-up.png": "/static/media/thumbs-up.04331bd11c32331c4473.png",
     "static/media/thumbs-down.png": "/static/media/thumbs-down.fe9d194bf403ce8c3a7a.png",
     "index.html": "/index.html",
+<<<<<<< Updated upstream
     "main.f6d0ed7a.css.map": "/static/css/main.f6d0ed7a.css.map",
     "main.f64534e2.js.map": "/static/js/main.f64534e2.js.map",
     "787.2b5315be.chunk.js.map": "/static/js/787.2b5315be.chunk.js.map"
@@ -14,5 +20,14 @@
   "entrypoints": [
     "static/css/main.f6d0ed7a.css",
     "static/js/main.f64534e2.js"
+=======
+    "main.736ff148.css.map": "/static/css/main.736ff148.css.map",
+    "main.fb74cd62.js.map": "/static/js/main.fb74cd62.js.map",
+    "787.2b5315be.chunk.js.map": "/static/js/787.2b5315be.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.736ff148.css",
+    "static/js/main.fb74cd62.js"
+>>>>>>> Stashed changes
   ]
 }
