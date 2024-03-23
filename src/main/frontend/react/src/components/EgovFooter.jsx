@@ -1,11 +1,8 @@
 import React from 'react';
-import { Link, useLocation  } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ChatBot from "../chatbot/ChatBot";
 
 function EgovFooter() {
-    const location = useLocation();
-    const isDetailPage = location.pathname.startsWith('/DetailPage');
-
     return (
         <div className="footer">
             <div className="inner">
@@ -26,7 +23,7 @@ function EgovFooter() {
                     </Link>
                 </div>
             </div>
-            {!isDetailPage && <ChatBot/>}
+            <ChatBot/>
         </div>
     );
 }

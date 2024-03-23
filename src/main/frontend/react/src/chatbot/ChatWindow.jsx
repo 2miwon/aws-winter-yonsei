@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from "react";
 import axios from "axios";
 import '../css/chatbot.css';
 
-const ChatWindow = ({ messages, setMessages, idx }) => {
+const ChatWindow = ({ messages, setMessages }) => {
     // 여기에는 메시지를 표시하고 입력을 처리하는 로직을 추가합니다.
     const handleMessageSubmit = async (e) => {
         e.preventDefault();
@@ -11,9 +11,7 @@ const ChatWindow = ({ messages, setMessages, idx }) => {
             setMessages([...messages, { type: 'user', text: inputMessage }]); // 사용자 메시지 추가
             e.target.message.value = ''; // 입력 필드 초기화
 
-            const messagePayload = idx ? { message: inputMessage, idx } : { message: inputMessage };
-            console.log("message: ", messagePayload);
-            const response = await sendMessageToBackend(messagePayload);
+            const response = await sendMessageToBackend(inputMessage);
             if (!response.error) {
                 setMessages(messages => [...messages, { type: 'bot', text: response }]); // 백엔드 응답 추가
             } else {
