@@ -20,6 +20,11 @@ public class SPAController {
         return "forward:/";
     }
 
+    @RequestMapping("/election/**")
+    public String election() {
+        return "forward:/";
+    }
+
     // @RequestMapping("/file/**")
     // public String file() {
     // return "forward:/";

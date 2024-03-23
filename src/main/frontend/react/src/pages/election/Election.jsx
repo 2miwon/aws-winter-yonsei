@@ -36,8 +36,16 @@ const Election = () => {
     };
 
         return (
-        <div className="detail-page">
-            <h1 className="detail-page-title">{bill.name}</h1>
+        <div className="page">
+            <div className="title">
+                <img src="/assets/images/vote.svg" />
+                <h1>광주광역시 북구을</h1>
+            </div>
+            
+            <div className="middle">
+                
+            </div>
+
             <div className="colbox">
                 <div className="left_col">
                     <div style={{width: "100%"}}>
