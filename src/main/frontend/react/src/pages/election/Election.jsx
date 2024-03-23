@@ -49,12 +49,17 @@ const Election = () => {
             
             <div className="middle">
                     {Array.from({ length: 7 }, (_, i) => (
-                        <div className="block">
+                        <div className="block" 
+                            key={i}
+                            onClick={(e) => setSelectedImage(i)} 
+                            >
                             <img
-                                key={i}
                                 src={`/assets/images/${i + 1}.png`}
                                 className={selectedImage === i + 1 ? 'selected' : ''}
                                 alt={`Image ${i + 1}`}
+                                style={{ 
+                                    filter: selectedImage === i ? 'none' : 'grayscale(0.8)', 
+                                }}
                               />
                               <div className="info">
                                 {i+1}
