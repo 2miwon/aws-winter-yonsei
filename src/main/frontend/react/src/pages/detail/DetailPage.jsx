@@ -2,7 +2,6 @@ import React, {useEffect, useRef, useState} from "react";
 import {useParams} from "react-router-dom";
 import WebViewer from "@pdftron/webviewer";
 import axios from "axios";
-import Chart from "chart.js/auto";
 import '../../css/detailPage.css'
 
 const DetailPage = () => {
