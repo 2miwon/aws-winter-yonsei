@@ -55,7 +55,7 @@ const Election = () => {
                             >
                             <img
                                 src={`/assets/images/${i + 1}.png`}
-                                className={selectedImage === i + 1 ? 'selected' : ''}
+                                className={selectedImage === i ? 'selected' : ''}
                                 alt={`Image ${i + 1}`}
                                 style={{ 
                                     filter: selectedImage === i ? 'none' : 'grayscale(0.8)', 
