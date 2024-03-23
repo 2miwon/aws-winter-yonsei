@@ -243,6 +243,7 @@ const DetailPage = () => {
 
                     <div className="opinion-ratio-chart">
                         <h3>긍정/부정 비율</h3>
+                        <div style={{height: "5px"}}></div>
                         <div style={{display: "flex", alignItems: "center"}}>
                             <div style={{marginRight: "10px", width: "50px"}}>긍정</div>
                             <div style={{flex: 1}}>
@@ -270,6 +271,7 @@ const DetailPage = () => {
 
                     <div className="opinion-write-text">
                         <h3>의견 작성</h3>
+                        <div style={{height: "5px"}}></div>
                     </div>
 
                     <div className="opinion-form">
