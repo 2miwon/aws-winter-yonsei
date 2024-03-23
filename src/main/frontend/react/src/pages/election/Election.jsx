@@ -5,6 +5,18 @@ import '../../css/Election.css';
 import ElectionChat from "./ElectionChat";
 
 const Election = () => {
+    const {id} = useParams();
+    const idx = parseInt(id);
+
+    const [selectedImage, setSelectedImage] = useState(0);
+
+    const [bill, setBill] = useState({
+        id: idx,
+        name: '',
+        proposer: '',
+        date: ''
+    });
+    const [content, setContent] = useState();
     // useParams를 사용하여 URL에서 후보자 ID를 가져옵니다.
     const [candidate, setCandidate] = useState(null);
     const [agreeMessages, setAgreeMessages] = useState([]);
@@ -26,6 +38,11 @@ const Election = () => {
         setCandidate(candidates[0]);
     }, [candidate]);
 
+    const renderContentWithBreaks = (content) => {
+        return content.split(/(?=\d\.)/).map((paragraph, index) => (
+            <p key={index} className="summary-text">{paragraph}</p>
+        ));
+    };
 
         return (
         <div className="page">
@@ -33,9 +50,9 @@ const Election = () => {
                 <img src="/assets/images/vote.svg" />
                 <h1>광주광역시 북구을</h1>
             </div>
-
+            
             <div className="middle">
-
+                
             </div>
 
             <div className="colbox">
