@@ -75,6 +75,7 @@ const Election = () => {
                     </div>
                 </div>
             </div>
+            <ElectionChat candidateInfo={candidate}/>
         </div>
     );
 };

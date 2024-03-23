@@ -18,7 +18,7 @@ const ChatComponent = ({ endpoint, title, pledge }) => {
         e.target.elements.message.value = ''; // 입력 필드 초기화
 
         try {
-            const response = await axios.post(endpoint, form);
+            const response = await axios.post(`/gpt/${endpoint}`, form);
             setMessages(prevMessages => [...prevMessages, { type: 'bot', text: response.data }]);
         } catch (error) {
             console.error('Error sending message:', error);
@@ -49,12 +49,12 @@ const ChatComponent = ({ endpoint, title, pledge }) => {
 const ElectionChat = ({ candidateInfo }) => {
     return (
         <div className="election-chat-container">
-            <ChatComponent endpoint="/agree" title="찬성 의견" pledge={candidateInfo.pledge} />
+            <ChatComponent endpoint="agree" title="찬성 의견" pledge={candidateInfo.pledge} />
             <div className="pledge-container">
                 <h2>{candidateInfo.name} ({candidateInfo.party})</h2>
                 <p>{candidateInfo.pledge}</p>
             </div>
-            <ChatComponent endpoint="/disagree" title="반대 의견" pledge={candidateInfo.pledge}/>
+            <ChatComponent endpoint="disagree" title="반대 의견" pledge={candidateInfo.pledge}/>
         </div>
     );
 };
