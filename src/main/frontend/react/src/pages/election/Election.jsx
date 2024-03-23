@@ -7,6 +7,8 @@ const Election = () => {
     const {id} = useParams();
     const idx = parseInt(id);
 
+    const [selectedImage, setSelectedImage] = useState(0);
+
     const [bill, setBill] = useState({
         id: idx,
         name: '',
@@ -39,11 +41,18 @@ const Election = () => {
         <div className="page">
             <div className="title">
                 <img src="/assets/images/vote.svg" />
-                <h1>광주광역시 북구을</h1>
+                <h1> 광주광역시 북구을</h1>
             </div>
             
             <div className="middle">
-                
+                {Array.from({ length: 8 }, (_, i) => (
+                <img
+                    key={i}
+                    src={`/assets/images/${i + 1}.png`}
+                    className={selectedImage === i + 1 ? 'selected' : ''}
+                    alt={`Image ${i + 1}`}
+                  />
+                ))}
             </div>
 
             <div className="colbox">

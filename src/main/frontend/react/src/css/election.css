@@ -57,6 +57,19 @@
         margin-bottom: 20px;
 }
 
+.middle img {
+    top: 0;
+    left: 0;
+    width: 24dvw;
+    height: 60dvh;
+    /* opacity: 0.5; */
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 100%);
+    margin-right: 3dvh;
+}
+
+.middle img.selected {
+    opacity: 1;
+}
 .bill-summary {
     width: 100%;
     background-color: #f9f9f9;
