@@ -17,6 +17,7 @@ import initPage from 'js/ui';
 import DetailPage from "pages/detail/DetailPage";
 import UserInfo from "../pages/user/userInfo";
 import SearchResult from "../pages/search/SearchResult";
+import Election from "../pages/election/Election";
 
 const RootRoutes = () => {
   //useLocation객체를 이용하여 정규표현식을 사용한 /admin/~ 으로 시작하는 경로와 비교에 사용(아래 1줄) */}
@@ -93,9 +94,10 @@ const SecondRoutes = () => {
         <Route path={URL.LOGIN} element={<EgovLogin
                 onChangeLogin={(user) => setLoginVO(user)}
               />}/>
-          <Route path={URL.USERINFO} element={<UserInfo/>}/>
+          <Route path={"/election"} element={<Election/>}/>
           <Route path="/searchResult" element={<SearchResult/>} />
-          
+
+          <Route path={URL.ELECTION} element={<Election />} />
         {/* ERROR */}
         <Route path={URL.ERROR} element={<EgovError />} />
 

@@ -1,0 +1,512 @@
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.2)
+
+2024-03-24T00:34:20.513+09:00  INFO 19317 --- [           main] com.yonsei.demo.DemoApplication          : Starting DemoApplication v0.0.1 using Java 20.0.2 with PID 19317 (/Users/macheewon/Documents/GitHub/aws-winter-yonsei/build/libs/aws-winter-yonsei-0.0.1.war started by macheewon in /Users/macheewon/Documents/GitHub/aws-winter-yonsei)
+2024-03-24T00:34:20.514+09:00  INFO 19317 --- [           main] com.yonsei.demo.DemoApplication          : The following 2 profiles are active: "oauth", "API-KEY"
+2024-03-24T00:34:21.453+09:00  INFO 19317 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-24T00:34:21.485+09:00  INFO 19317 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 5 JPA repository interfaces.
+2024-03-24T00:34:22.008+09:00  INFO 19317 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-03-24T00:34:22.017+09:00  INFO 19317 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-24T00:34:22.017+09:00  INFO 19317 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-03-24T00:34:22.108+09:00  INFO 19317 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-24T00:34:22.108+09:00  INFO 19317 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1351 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+2024-03-24T00:34:22.320+09:00  INFO 19317 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-24T00:34:22.372+09:00  INFO 19317 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-03-24T00:34:22.395+09:00  INFO 19317 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-24T00:34:22.550+09:00  INFO 19317 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-24T00:34:22.566+09:00  WARN 19317 --- [           main] com.zaxxer.hikari.HikariConfig           : HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2024-03-24T00:34:22.567+09:00  INFO 19317 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-24T00:34:23.460+09:00  INFO 19317 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@19c24321
+2024-03-24T00:34:23.462+09:00  INFO 19317 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-24T00:34:23.581+09:00  WARN 19317 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-03-24T00:34:24.325+09:00  INFO 19317 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-24T00:34:25.016+09:00  INFO 19317 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-24T00:34:25.465+09:00  INFO 19317 --- [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-03-24T00:34:26.068+09:00  WARN 19317 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-24T00:34:26.313+09:00  INFO 19317 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-03-24T00:34:26.586+09:00  INFO 19317 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-03-24T00:34:26.845+09:00  INFO 19317 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2613a6fc, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7d6e3e42, org.springframework.security.web.context.SecurityContextHolderFilter@58d8e971, org.springframework.security.web.header.HeaderWriterFilter@674db438, org.springframework.web.filter.CorsFilter@103388c6, org.springframework.security.web.authentication.logout.LogoutFilter@4ed343ea, org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter@198453c9, org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter@1decf3e3, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@784bea2c, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@14221dc6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5aa16232, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6ff08304, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2fbd6df8, org.springframework.security.web.access.ExceptionTranslationFilter@9b8d3db, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@de61005]
+2024-03-24T00:34:27.416+09:00  INFO 19317 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-03-24T00:34:27.430+09:00  INFO 19317 --- [           main] com.yonsei.demo.DemoApplication          : Started DemoApplication in 7.232 seconds (process running for 7.865)
+2024-03-24T00:34:28.538+09:00  INFO 19317 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-03-24T00:34:28.538+09:00  INFO 19317 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-03-24T00:34:28.539+09:00  INFO 19317 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-03-24T00:34:28.784+09:00 DEBUG 19317 --- [nio-8080-exec-7] org.hibernate.SQL                        : select count(b1_0.bill_no) from bills b1_0
+2024-03-24T00:34:40.838+09:00 DEBUG 19317 --- [nio-8080-exec-8] org.hibernate.SQL                        : select b1_0.bill_no,b1_0.bill_id,b1_0.created_at,b1_0.date,b1_0.file_link,b1_0.proposer,b1_0.title,b1_0.updated_at from bills b1_0 where b1_0.bill_no=?
+2024-03-24T00:34:45.652+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+24813 (24813) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.654+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+30193 (30193) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.654+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+29937 (29937) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.657+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+33777 (33777) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.664+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+29678 (29678) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.692+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+27132 (27132) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.693+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+29677 (29677) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.695+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+23533 (23533) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.700+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+29685 (29685) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.701+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+23277 (23277) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.701+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+30190 (30190) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.702+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+30205 (30205) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.702+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+30462 (30462) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.702+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+23281 (23281) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.703+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+30445 (30445) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.705+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+23541 (23541) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.708+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+25597 (25597) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.708+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+24561 (24561) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.710+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+23542 (23542) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.710+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+31477 (31477) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.714+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+33781 (33781) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.717+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+31481 (31481) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.720+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+30449 (30449) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.726+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+33021 (33021) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.737+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+29683 (29683) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.740+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+23294 (23294) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.742+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+6838 (6838) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.748+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+33790 (33790) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.749+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+33017 (33017) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.749+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+27117 (27117) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.758+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+30197 (30197) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.773+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+24309 (24309) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.784+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+30189 (30189) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.789+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14137 (14137) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.793+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+24317 (24317) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.805+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+30206 (30206) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.818+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+24565 (24565) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.821+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+29433 (29433) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.823+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+33789 (33789) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.830+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+4165 (4165) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.877+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+33773 (33773) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.892+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+6442 (6442) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.969+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+33521 (33521) in font IOEOXI+*HY_Sinmyeongjo-Identity-H
+2024-03-24T00:34:45.990+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14962 (14962) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.990+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+15046 (15046) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.990+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14955 (14955) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.990+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14766 (14766) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.990+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14794 (14794) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.990+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+12011 (12011) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.990+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+13170 (13170) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.990+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14591 (14591) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.990+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14754 (14754) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.990+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10930 (10930) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.990+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10706 (10706) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.990+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14742 (14742) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.990+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11519 (11519) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.991+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14746 (14746) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.991+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8942 (8942) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.991+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14710 (14710) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.991+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9187 (9187) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.991+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+16226 (16226) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.991+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10118 (10118) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.991+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11214 (11214) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.991+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11884 (11884) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.992+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18522 (18522) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.992+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14935 (14935) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.992+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14738 (14738) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.992+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+12254 (12254) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.992+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+13422 (13422) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.993+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10722 (10722) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.993+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14682 (14682) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.993+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9842 (9842) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.993+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14843 (14843) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.993+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+13282 (13282) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.993+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14238 (14238) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.993+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14938 (14938) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.993+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18610 (18610) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.994+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8102 (8102) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.994+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18603 (18603) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.994+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14570 (14570) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.994+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14814 (14814) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.994+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14822 (14822) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.994+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10931 (10931) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.994+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+13178 (13178) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.994+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+16558 (16558) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.994+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11218 (11218) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.994+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+13283 (13283) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.994+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8326 (8326) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.995+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+13171 (13171) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.995+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+13174 (13174) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.995+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14486 (14486) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.995+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8130 (8130) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.995+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+12250 (12250) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.995+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10641 (10641) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.995+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10710 (10710) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.998+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18098 (18098) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.999+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14823 (14823) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.999+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11666 (11666) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.999+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+13758 (13758) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.999+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11518 (11518) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.999+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+12246 (12246) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.999+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+15207 (15207) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.999+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14255 (14255) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.999+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11903 (11903) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.999+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11483 (11483) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.999+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18623 (18623) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.999+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14950 (14950) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.999+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9558 (9558) in font WXKUTN+BatangChe
+2024-03-24T00:34:45.999+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11462 (11462) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.000+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18574 (18574) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.000+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14546 (14546) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.000+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+15194 (15194) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.000+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9838 (9838) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.000+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14798 (14798) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.004+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+13191 (13191) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.004+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18602 (18602) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.004+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8022 (8022) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.004+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11190 (11190) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.004+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18679 (18679) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.004+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14802 (14802) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.004+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11886 (11886) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.005+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11877 (11877) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.005+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10895 (10895) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.005+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8334 (8334) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.005+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14234 (14234) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.008+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9902 (9902) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.008+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11662 (11662) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.008+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18606 (18606) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.008+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18926 (18926) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.010+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+17766 (17766) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.010+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11882 (11882) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.011+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+16363 (16363) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.011+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10875 (10875) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.012+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14542 (14542) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.014+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11186 (11186) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.016+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9670 (9670) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.017+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11910 (11910) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.017+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+16370 (16370) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.017+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8330 (8330) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.017+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8287 (8287) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.017+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10734 (10734) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.018+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18526 (18526) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.018+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14263 (14263) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.018+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11994 (11994) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.018+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+13562 (13562) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.018+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+13198 (13198) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.019+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14711 (14711) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.020+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+16222 (16222) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.020+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14423 (14423) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.020+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9894 (9894) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.020+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+17286 (17286) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.021+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10230 (10230) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.021+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+15327 (15327) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.023+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+15067 (15067) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.023+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11466 (11466) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.023+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11889 (11889) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.023+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8950 (8950) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.023+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9114 (9114) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.025+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14260 (14260) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.025+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11210 (11210) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.025+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14428 (14428) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.026+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14490 (14490) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.026+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18910 (18910) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.028+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14262 (14262) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.029+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14311 (14311) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.030+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8039 (8039) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.030+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8134 (8134) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.030+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10146 (10146) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.031+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14290 (14290) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.032+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18658 (18658) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.032+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11890 (11890) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.033+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8286 (8286) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.033+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+15190 (15190) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.034+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8959 (8959) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.034+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14430 (14430) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.034+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11182 (11182) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.035+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11658 (11658) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.035+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+15347 (15347) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.036+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8354 (8354) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.037+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8131 (8131) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.037+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+17538 (17538) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.037+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+13426 (13426) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.040+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14242 (14242) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.040+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10874 (10874) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.041+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18535 (18535) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.043+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+17762 (17762) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.043+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+13286 (13286) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.043+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+12010 (12010) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.043+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18578 (18578) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.043+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14839 (14839) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.044+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11862 (11862) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.044+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10893 (10893) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.044+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9650 (9650) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.044+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9846 (9846) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.046+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+16503 (16503) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.046+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+16559 (16559) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.046+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10882 (10882) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.048+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10878 (10878) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.049+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+12271 (12271) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.052+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9978 (9978) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.053+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11998 (11998) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.053+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9174 (9174) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.054+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18886 (18886) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.054+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+17783 (17783) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.057+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14942 (14942) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.058+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9166 (9166) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.061+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+13430 (13430) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.061+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+17398 (17398) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.063+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9167 (9167) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.065+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14507 (14507) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.065+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10902 (10902) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.067+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14811 (14811) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.067+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+15074 (15074) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.071+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+16383 (16383) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.078+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8866 (8866) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.079+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14934 (14934) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.081+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9054 (9054) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.082+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9065 (9065) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.089+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+16306 (16306) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.090+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+17290 (17290) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.094+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14458 (14458) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.096+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+15063 (15063) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.097+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14466 (14466) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.101+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9192 (9192) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.104+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9062 (9062) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.106+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8914 (8914) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.107+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14990 (14990) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.110+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8379 (8379) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.113+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9070 (9070) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.126+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14951 (14951) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.133+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+17559 (17559) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.134+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9915 (9915) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.135+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14810 (14810) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.137+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18871 (18871) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.137+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9081 (9081) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.137+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11427 (11427) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.144+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14422 (14422) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.146+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14826 (14826) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.146+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8958 (8958) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.147+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+16366 (16366) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.148+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+16362 (16362) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.148+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18539 (18539) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.149+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11898 (11898) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.149+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10622 (10622) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.151+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11891 (11891) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.151+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8858 (8858) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.151+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14838 (14838) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.151+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8883 (8883) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.153+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10238 (10238) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.153+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9668 (9668) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.153+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14178 (14178) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.153+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11660 (11660) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.156+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14759 (14759) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.158+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18534 (18534) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.159+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18686 (18686) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.161+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+17874 (17874) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.162+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+13202 (13202) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.162+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14291 (14291) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.162+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18142 (18142) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.166+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+16562 (16562) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.166+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+17622 (17622) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.167+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14239 (14239) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.168+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14250 (14250) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.168+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14718 (14718) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.169+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9898 (9898) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.169+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+17554 (17554) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.171+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+16378 (16378) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.172+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18826 (18826) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.174+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10090 (10090) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.174+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+17294 (17294) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.174+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11414 (11414) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.174+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+13303 (13303) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.176+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10678 (10678) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.180+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11470 (11470) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.185+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14254 (14254) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.191+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8074 (8074) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.192+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8946 (8946) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.200+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8382 (8382) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.206+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14468 (14468) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.206+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9193 (9193) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.209+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+13766 (13766) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.209+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9646 (9646) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.230+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+15054 (15054) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.231+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+12002 (12002) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.244+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+17770 (17770) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.244+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14809 (14809) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.244+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18518 (18518) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.249+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14253 (14253) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.257+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+8162 (8162) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.259+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+12247 (12247) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.263+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+10894 (10894) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.292+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9082 (9082) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.304+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+9642 (9642) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.316+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14795 (14795) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.353+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+16579 (16579) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.358+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18595 (18595) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.364+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14731 (14731) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.365+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+14815 (14815) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.365+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11406 (11406) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.367+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+17330 (17330) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.380+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18914 (18914) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.381+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+12013 (12013) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.382+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+16574 (16574) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.402+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+18798 (18798) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.407+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+17314 (17314) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.409+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+11911 (11911) in font WXKUTN+BatangChe
+2024-03-24T00:34:46.411+09:00  WARN 19317 --- [nio-8080-exec-8] o.a.pdfbox.pdmodel.font.PDType0Font      : No Unicode mapping for CID+16586 (16586) in font WXKUTN+BatangChe
+2024-03-24T00:34:47.658+09:00 ERROR 19317 --- [nio-8080-exec-8] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.web.client.HttpClientErrorException$TooManyRequests: 429 Too Many Requests: "{<EOL>    "error": {<EOL>        "message": "Request too large for gpt-3.5-turbo-1106-shared in organization org-upGoJF55cw50hevIqW3Hu5xs on tokens per min (TPM): Limit 60000, Requested 104978. The input or output tokens must be reduced in order to run successfully. Visit https://platform.openai.com/account/rate-limits to learn more.",<EOL>        "type": "tokens",<EOL>        "param": null,<EOL>        "code": "rate_limit_exceeded"<EOL>    }<EOL>}<EOL>"] with root cause
+
+org.springframework.web.client.HttpClientErrorException$TooManyRequests: 429 Too Many Requests: "{<EOL>    "error": {<EOL>        "message": "Request too large for gpt-3.5-turbo-1106-shared in organization org-upGoJF55cw50hevIqW3Hu5xs on tokens per min (TPM): Limit 60000, Requested 104978. The input or output tokens must be reduced in order to run successfully. Visit https://platform.openai.com/account/rate-limits to learn more.",<EOL>        "type": "tokens",<EOL>        "param": null,<EOL>        "code": "rate_limit_exceeded"<EOL>    }<EOL>}<EOL>"
+	at org.springframework.web.client.HttpClientErrorException.create(HttpClientErrorException.java:130) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:183) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:137) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.client.ResponseErrorHandler.handleError(ResponseErrorHandler.java:63) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.client.RestTemplate.handleResponse(RestTemplate.java:932) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:881) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:781) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.client.RestTemplate.postForObject(RestTemplate.java:498) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at com.yonsei.demo.service.ChatGptService.summary(ChatGptService.java:74) ~[!/:0.0.1]
+	at com.yonsei.demo.controller.ChatGptController.summary(ChatGptController.java:22) ~[!/:0.0.1]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:261) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:189) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917) ~[spring-webmvc-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829) ~[spring-webmvc-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.3.jar!/:6.1.3]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.3.jar!/:6.1.3]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.18.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:479) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:340) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:82) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:128) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:117) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:83) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter.doFilterInternal(DefaultLogoutPageGeneratingFilter.java:58) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:189) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:175) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:227) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:221) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:181) ~[spring-security-oauth2-client-6.2.1.jar!/:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:323) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:224) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.1.jar!/:6.2.1]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:225) ~[spring-security-config-6.2.1.jar!/:6.2.1]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.3.jar!/:6.1.3]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.18.jar!/:na]
+	at java.base/java.lang.Thread.run(Thread.java:1623) ~[na:na]
+
+2024-03-24T00:34:48.763+09:00 DEBUG 19317 --- [nio-8080-exec-6] org.hibernate.SQL                        : select count(b1_0.bill_no) from bills b1_0
+2024-03-24T00:36:04.840+09:00 DEBUG 19317 --- [nio-8080-exec-9] org.hibernate.SQL                        : select count(b1_0.bill_no) from bills b1_0
+2024-03-24T00:36:15.199+09:00  INFO 19317 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-03-24T00:36:15.202+09:00  INFO 19317 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-03-24T00:36:15.578+09:00  INFO 19317 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
